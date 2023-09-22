@@ -34,6 +34,22 @@ $main-back: #f8f8fb;
   font-weight: 400;
   line-height: normal;
 }
+@mixin hashtag {
+  width: 90px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 30px;
+  background: #5e8bff;
+}
+@mixin tag-text {
+  color: #fff;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-align: center;
+}
 * {
   margin: 0;
   padding: 0;
@@ -294,13 +310,11 @@ body {
 
       .intro-inner {
         position: absolute;
-        width: 60%;
-        height: 60%;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
         gap: 40px;
 
@@ -313,6 +327,8 @@ body {
         }
 
         .desc {
+          width: 760px;
+          height: 200px;
           display: flex;
           flex-direction: column;
           justify-content: space-around;
@@ -327,6 +343,32 @@ body {
             p {
               @include sub-text2;
             }
+          }
+        }
+      }
+      .hashtag {
+        position: absolute;
+        left: 30px;
+        bottom: 30px;
+        display: flex;
+        gap: 10px;
+        .tag {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: 0.3s;
+          cursor: default;
+          @include hashtag;
+
+            &:hover{
+              background: #487cff;
+            }
+
+          span {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            @include tag-text;
           }
         }
       }
