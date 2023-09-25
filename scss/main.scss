@@ -124,8 +124,9 @@ body {
         flex: 1 0 0;
         align-self: stretch;
         text-align: center;
-        border: none;
+        border: transparent;
         cursor: pointer;
+        transition: 0.3s;
 
         text {
           height: 18px;
@@ -200,7 +201,7 @@ body {
         }
       }
     }
-    .gb {
+    .gb, .gb1 {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -209,6 +210,7 @@ body {
       height: 600px;
       flex-shrink: 0;
       transition: 0.2s linear;
+      overflow: hidden;
 
       border-radius: 30px;
       border: 1px solid var(--glass-stroke, rgba(255, 255, 255, 0.6));
@@ -277,11 +279,15 @@ body {
 
         div {
           cursor: pointer;
+
+          img{
+            transition: 0.3s;
+          }
         }
 
-        .prev {
+        /* .prev {
           opacity: 0.3;
-        }
+        } */
       }
 
       .text-main {
@@ -299,12 +305,16 @@ body {
           font-style: normal;
           font-weight: 700;
           line-height: normal;
+          transition: 0.3s;
 
-          display: none;
         }
 
+        .eng {
+          position: absolute;
+        }
         .kor {
-          display: none;
+          position: absolute;
+          visibility: hidden;
         }
       }
 
@@ -360,9 +370,9 @@ body {
           cursor: default;
           @include hashtag;
 
-            &:hover{
-              background: #487cff;
-            }
+          &:hover {
+            background: #487cff;
+          }
 
           span {
             display: flex;
@@ -373,5 +383,82 @@ body {
         }
       }
     }
+
+    /* .gb2 .intro-inner{
+      visibility: hidden;
+    } */
+    .gb2,
+    .gb3,
+    .gb4,
+    .gb5,
+    .gb6 {
+      visibility: hidden;
+    }
+
+    .gb3 {
+      .text-main {
+        width: fit-content;
+        height: fit-content;
+        margin: 20px 30px;
+        p {
+          // visibility: visible;
+        }
+      }
+
+      .img {
+        img {
+          width: 1280px;
+        }
+      }
+    }
+    .gb4 {
+      left: 2450px;
+
+      .text-main {
+        width: fit-content;
+        height: fit-content;
+        margin: 20px 30px;
+      }
+    }
+
+    .gb5{
+
+      .desc{
+        .text-sub{
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          img{
+            border-radius: 14px;
+          }
+          p.one{
+            @include sub-text();
+          }
+          p.two{
+            @include sub-text2;
+          }
+        }
+        .text-sub2{
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          img{
+            border-radius: 14px;
+          }
+          p.one{
+            @include sub-text();
+          }
+          p.two{
+            @include sub-text2;
+          }
+        }
+      }
+    }
   }
+}
+.show{
+  visibility: visible;
+}
+.hide{
+  visibility: hidden;
 }
