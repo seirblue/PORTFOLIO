@@ -264,18 +264,22 @@ $(function () {
   });
   $(".gb3 .navigation-btn .next img").click(function(){
     $(".gb3").css({
-      left:"-500px"
+      left:"-500px",
+      transition:"all 0.7s"
     })
     $(".gb4").css({
-      left:"50%"
+      left:"50%",
+      transition:"all 0.7s"
     })
   })
   $(".gb4 .navigation-btn .prev img").click(function(){
     $(".gb3").css({
-      left:"50%"
+      left:"50%",
+      transition:"all 0.7s"
     })
     $(".gb4").css({
-      left:"2450px"
+      left:"2450px",
+      transition:"all 0.7s"
     })
   })
   $(".gb5 .navigation-btn .next img").click(function () {
