@@ -7,6 +7,33 @@
   font-weight: 400;
   font-style: normal;
 }
+// Break Point
+$mobile: 767px;
+$tablet: 768px;
+$laptop: 1020px;
+$desktop: 1400px;
+@mixin mobile {
+  @media (max-width: #{$mobile}) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (min-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (min-width: #{$laptop}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
+}
 
 $main-back: #f8f8fb;
 @mixin main-title {
@@ -54,7 +81,16 @@ $main-back: #f8f8fb;
   margin: 0;
   padding: 0;
 }
-
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: #333;
+}
+a:hover {
+  text-decoration: underline;
+}
 body {
   font-family: Pretendard;
 }
@@ -64,8 +100,8 @@ body {
 
   .intro {
     position: relative;
-    width: 100%;
-    max-width: 1920px;
+    width: 100vw;
+    // min-width: 1920px;
     height: 100vh;
     display: flex;
 
@@ -85,10 +121,16 @@ body {
         width: 600px;
         height: 600px;
         flex-shrink: 0;
+        transition: 0.5s;
 
         border-radius: 600px;
         background: #dfe4ff;
         filter: blur(50px);
+
+        @include mobile() {
+          top: 40%;
+          right: 40%;
+        }
       }
       .bac-circle2 {
         position: absolute;
@@ -97,6 +139,7 @@ body {
         width: 1000px;
         height: 1000px;
         flex-shrink: 0;
+        transition: 0.5s;
 
         border-radius: 1000px;
         background: #dffff0;
@@ -202,11 +245,12 @@ body {
         }
       }
     }
-    .gb, .gb1 {
+    .gb,
+    .gb1 {
       position: absolute;
       top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      left: 52.5%;
+      transform: translate(-52.5%, -50%);
       width: 1280px;
       height: 600px;
       flex-shrink: 0;
@@ -228,17 +272,21 @@ body {
       box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.25);
       backdrop-filter: blur(5px);
 
-      @media screen and (min-width:1919px){
-        #wrap .intro .gb{
-          left:50%;
-        }
+      @include mobile() {
+        width: 90%;
+        height: 80%;
+        top: 55%;
       }
-      @media screen and (min-width:2559px){
-        #wrap .intro .gb{
-          left:52.5%;
-        }
+      @include tablet() {
+        width: 800px;
       }
-      
+      @include laptop() {
+        width: 1000px;
+      }
+      @include desktop() {
+        width: 1280px;
+      }
+
       .window-controls {
         display: inline-flex;
         align-items: center;
@@ -292,7 +340,7 @@ body {
         div {
           cursor: pointer;
 
-          img{
+          img {
             transition: 0.3s;
           }
         }
@@ -304,29 +352,36 @@ body {
 
       .text-main {
         display: flex;
-        width: fit-content;
+        width: auto;
         height: 80%;
-        margin: 0 auto;
+        margin: 0 40px;
         justify-content: center;
         align-items: center;
 
         p {
-          color: #000;
+          color: #333;
+          text-shadow: 0px 0px 1px rgba($color: #000000, $alpha: 0.5);
           font-family: Pretendard;
           font-size: 48px;
           font-style: normal;
           font-weight: 700;
           line-height: normal;
           transition: 0.3s;
-
+          white-space: wrap;
         }
-
-        .eng {
-          position: absolute;
-        }
-        .kor {
-          position: absolute;
-          visibility: hidden;
+        .typing {
+          @include mobile() {
+            font-size: 24px;
+          }
+          @include tablet() {
+            font-size: 36px;
+          }
+          @include laptop() {
+            font-size: 48px;
+          }
+          @include desktop() {
+            font-size: 48px;
+          }
         }
       }
 
@@ -334,27 +389,26 @@ body {
         position: absolute;
         left: 50%;
         top: 50%;
+        width: 80%;
         transform: translate(-50%, -50%);
         display: flex;
         justify-content: space-around;
         align-items: center;
-        gap: 40px;
-
-        .pic {
-          flex-basis: 1;
-          img {
-            width: 100%;
-            height: 100%;
-          }
-        }
 
         .desc {
-          width: 760px;
+          width: 100%;
           height: 200px;
           display: flex;
           flex-direction: column;
-          justify-content: space-around;
+          justify-content: space-between;
           gap: 30px;
+
+          @include mobile() {
+            width: 100%;
+            height: 100%;
+            white-space: wrap;
+            gap: 0;
+          }
           .text-sub {
             p {
               @include sub-text;
@@ -407,77 +461,214 @@ body {
       visibility: hidden;
     }
 
+    .gb2 {
+      // overflow: visible;
+      .intro-inner {
+        @include tablet() {
+          
+          .pic {
+            img {
+              transform: scale(0.5);
+            }
+          }
+        }
+        @include laptop() {
+          flex-direction: row;
+          .pic img {
+            transform: scale(1);
+          }
+        }
+        .pic {
+          // flex-basis: 1;
+          img {
+            width: 100%;
+            height: 100%;
+            transition: 0.5s;
+
+            @include mobile() {
+              display: none;
+            }
+          }
+        }
+
+        .text-sub {
+        }
+        .text-sub2 {
+          width: fit-content;
+        }
+      }
+    }
     .gb3 {
       .text-main {
         width: fit-content;
         height: fit-content;
         margin: 20px 30px;
         p {
-          // visibility: visible;
+          @include mobile() {
+            font-size: 20px;
+          }
+          @include tablet() {
+            font-size: 24px;
+          }
+          @include laptop() {
+            font-size: 32px;
+          }
+          @include desktop() {
+            font-size: 48px;
+          }
         }
       }
 
       .img {
         img {
-          width: 1280px;
+          width: 100% !important;
         }
       }
     }
     .gb4 {
-      left: 2450px;
+      left: 2650px;
 
       .text-main {
         width: fit-content;
         height: fit-content;
         margin: 20px 30px;
-      }
-    }
 
-    .gb5{
-
-      .desc{
-        .text-sub{
-          display: flex;
-          align-items: center;
-          gap: 20px;
-          img{
-            border-radius: 14px;
+        p {
+          @include mobile() {
+            font-size: 20px;
           }
-          p.one{
-            @include sub-text();
+          @include tablet() {
+            font-size: 24px;
           }
-          p.two{
-            @include sub-text2;
+          @include laptop() {
+            font-size: 32px;
+          }
+          @include desktop() {
+            font-size: 48px;
           }
         }
-        .text-sub2{
-          display: flex;
-          align-items: center;
-          gap: 20px;
-          img{
-            border-radius: 14px;
-          }
-          p.one{
-            @include sub-text();
-          }
-          p.two{
-            @include sub-text2;
-          }
+      }
+
+      .img {
+        img {
+          width: 100% !important;
         }
       }
     }
 
-    .gb6{
+    .gb5 {
+      .intro-inner {
+        @include mobile() {
+          display: flex;
+          flex-direction: column;
+        }
+        @include tablet() {
+          display: flex;
+          flex-direction: column;
+        }
+        @include laptop() {
+          display: flex;
+          flex-direction: row;
+        }
+        @include desktop() {
+          display: flex;
+          flex-direction: row;
+        }
+        .pic {
+          transition: 0.5s;
+          @include mobile() {
+            display: none;
+          }
+          img {
+            @include tablet() {
+              width: 250px;
+              height: 250px;
+            }
+          }
+        }
+        .desc {
+          @include tablet() {
+            width: fit-content;
+            margin: 0 auto;
+          }
 
-      .text-sub{
-        @include sub-text2()
+          .text-sub {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            img {
+              border-radius: 14px;
+              transition: 0.5s;
+              @include mobile() {
+                transform: scale(0.6);
+              }
+            }
+            p.one {
+              @include sub-text();
+            }
+            p.two {
+              @include sub-text2;
+            }
+            @include mobile() {
+              p.one {
+                font-size: 20px;
+              }
+              p.two {
+                font-size: 18px;
+              }
+            }
+          }
+          .text-sub2 {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            img {
+              border-radius: 14px;
+              transition: 0.5s;
+              @include mobile() {
+                transform: scale(0.6);
+              }
+            }
+            p.one {
+              @include sub-text();
+            }
+            p.two {
+              @include sub-text2;
+            }
+            @include mobile() {
+              p.one {
+                font-size: 20px;
+              }
+              p.two {
+                font-size: 18px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .gb6 {
+      .desc {
+        .text-sub {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          p.one {
+            @include sub-text2();
+          }
+          p.two {
+            @include sub-text2();
+          }
+        }
       }
     }
   }
 }
-.show{
+.show {
   visibility: visible;
 }
-.hide{
+.hide {
   visibility: hidden;
 }

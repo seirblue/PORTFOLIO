@@ -44,7 +44,7 @@ $(function () {
   });
 
   // 크기 조절
-  $(".gb1 > .window-controls .zoom").click(function () {
+  /* $(".gb1 > .window-controls .zoom").click(function () {
     $(".gb1").css({
       width: "1536px",
       height: "720px",
@@ -228,7 +228,7 @@ $(function () {
   });
   $(".gb6 .img img").css({
     width: "1280px",
-  });
+  }); */
 
   $(".gb1 .navigation-btn .prev img, .gb2 .navigation-btn .prev img, .gb3 .navigation-btn .prev img, .gb5 .navigation-btn .prev img").css({
     opacity: "0.3",
@@ -263,29 +263,54 @@ $(function () {
     });
   });
   $(".gb3 .navigation-btn .next img").click(function(){
+    $(this).css({
+      opacity:"0"
+    })
+    $(".gb3 .navigation-btn .prev img").css({
+      opacity:"0"
+    })
+    $(".gb4 .navigation-btn .next img").css({
+      opacity:"0.3"
+    })
     $(".gb3").css({
-      left:"-500px",
-      transition:"all 0.7s"
+      left:"-650px",
+      transition:"all 0.7s",
+      opacity:"0.6"
     })
     $(".gb4").css({
-      left:"50%",
-      transition:"all 0.7s"
+      left:"52.5%",
+      transition:"all 0.7s",
+      opacity:"1"
     })
   })
   $(".gb4 .navigation-btn .prev img").click(function(){
+    $(".gb4 .navigation-btn .next img").css({
+      opacity:"1"
+    })
+    $(".gb3 .navigation-btn .prev img").css({
+      opacity:"0.3"
+    })
+    $(".gb3 .navigation-btn .next img").css({
+      opacity:"1"
+    })
     $(".gb3").css({
-      left:"50%",
-      transition:"all 0.7s"
+      left:"52.5%",
+      transition:"all 0.7s",
+      opacity:"1"
     })
     $(".gb4").css({
-      left:"2450px",
-      transition:"all 0.7s"
+      left:"2650px",
+      transition:"all 0.7s",
+      opacity:"0.6"
     })
   })
   $(".gb5 .navigation-btn .next img").click(function () {
     $(".gb6 .navigation-btn .prev img").css({
       opacity: "1",
     });
+    $(".gb6 .navigation-btn .next img").css({
+      opacity:"0.3"
+    })
     $(".gb5").css({
       visibility: "hidden",
       opacity: "0",
@@ -308,7 +333,6 @@ $(function () {
       opacity: "1",
     });
   });
-  
 
   // 글자 타이핑 효과
   const $text = document.querySelector(".typing .text");
@@ -320,7 +344,7 @@ $(function () {
   ];
 
   // 글자 입력 속도
-  const speed = 100;
+  const speed = 60;
   let i = 0;
 
   // 타이핑 효과
@@ -361,5 +385,5 @@ $(function () {
   }
 
   // 초기 실행
-  setTimeout(typing, 1500);
+  setTimeout(typing, 800);
 });
