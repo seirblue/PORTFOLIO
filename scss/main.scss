@@ -275,6 +275,7 @@ body {
       @include mobile() {
         width: 90%;
         height: 80%;
+        min-height: 400px;
         top: 55%;
       }
       @include tablet() {
@@ -655,11 +656,31 @@ body {
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          p.one {
+          text-align: center;
+          gap: 20px;
+          p.one, p.two{
             @include sub-text2();
+            color: rgba(0, 0, 0, 0.4);
+            font-weight: bold;
+            transition: 0.4s;
           }
-          p.two {
-            @include sub-text2();
+          p.one, p.two{
+            @include mobile(){
+              font-size: 18px;
+              color: rgba(0, 0, 0, 0.4);
+            }
+          }
+          p.one, p.two{
+            @include tablet(){
+              font-size: 20px;
+              color: rgba(0, 0, 0, 0.4);
+            }
+          }
+          p.one, p.two{
+            @include laptop(){
+              font-size: 26px;
+              color: rgba(0, 0, 0, 0.4);
+            }
           }
         }
       }
