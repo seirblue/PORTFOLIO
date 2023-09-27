@@ -249,6 +249,35 @@ $(function () {
       opacity: "1",
     });
   });
+  $(".gb2 .navigation-btn .next img").click(function(){
+    $(".gb2-2 .navigation-btn .next img").css({
+      opacity:"0.3"
+    })
+    $(".gb2-2 .hashtag").css({
+      opacity:"0"
+    })
+    $(".gb2").css({
+      visibility:"hidden",
+      opacity:"0"
+    })
+    $(".gb2-2").css({
+      visibility:"visible",
+      opacity:"1"
+    })
+  })
+  $(".gb2-2 .navigation-btn .prev img").click(function(){
+    $(".gb2 .hashtag").css({
+      opacity:"1"
+    })
+    $(".gb2-2").css({
+      visibility:"hidden",
+      opacity:"0"
+    })
+    $(".gb2").css({
+      visibility:"visible",
+      opacity:"1"
+    })
+  })
   $(".gb2 .navigation-btn .prev img").click(function () {
     $(".gb1 .navigation-btn .prev img").css({
       opacity: "0.3",

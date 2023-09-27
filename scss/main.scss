@@ -432,6 +432,7 @@ body {
         bottom: 30px;
         display: flex;
         gap: 10px;
+        transition: 0.4s;
         .tag {
           display: flex;
           justify-content: center;
@@ -468,6 +469,7 @@ body {
     .gb2 {
       // overflow: visible;
       .intro-inner {
+        // display: none;
         @include tablet() {
           
           .pic {
@@ -495,10 +497,48 @@ body {
           }
         }
 
-        .text-sub {
-        }
         .text-sub2 {
           width: fit-content;
+        }
+      }
+    }
+    .gb2-2{
+        visibility: hidden;
+      .intro-inner2{
+        height: 70%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        ul{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 50px;
+          transition: 0.4s;
+          @include mobile(){
+            margin-top: 180px;
+            margin-left: 40px;
+            flex-direction: column;
+            gap: 10px;
+          }
+          li{
+            width: 100px;
+            height: 100px;
+            img{
+              width: 100%;
+              height: 100%;
+              transition: 0.4s;
+              filter: saturate(60%);
+              &:hover{
+                transform: scale(1.15);
+                filter: saturate(100%);
+              }
+              @include mobile(){
+                width: 60%;
+                height: 60%;
+              }
+            }
+          }
         }
       }
     }
@@ -612,6 +652,9 @@ body {
             }
             p.two {
               @include sub-text2;
+              &:hover{
+                text-decoration: underline;
+              }
             }
             @include mobile() {
               p.one {
@@ -638,6 +681,9 @@ body {
             }
             p.two {
               @include sub-text2;
+              &:hover{
+                text-decoration: underline;
+              }
             }
             @include mobile() {
               p.one {
